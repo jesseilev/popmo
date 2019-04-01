@@ -34,12 +34,13 @@ def fetch_popular_movies():
         'sort_by': 'popularity.desc'
     }
     response = requests.get(url, data=payload)
-    top_ten_movies = [ 
-        movie_from_json(json_obj)
-        for json_obj in
-        response.json()['results'][:10]
-    ]
-    return top_ten_movies
+    if (response.status_code == 200):
+        results = response.json()['results']
+        top_ten_movies = [ 
+            movie_from_json(json_obj) for json_obj in results[:10]
+        ]
+        return top_ten_movies
+
 
 def fetch_movie(movie_id):
     url = TMDB_URL + movie_id
@@ -47,8 +48,9 @@ def fetch_movie(movie_id):
         'api_key': TMDB_API_KEY
     }
     response = requests.get(url, data=payload)
-    movie = movie_from_json(response.json())
-    return movie
+    if (response.status_code == 200):
+        movie = movie_from_json(response.json())
+        return movie
 
 
 ##### APP ######
@@ -62,12 +64,22 @@ def index():
 @app.route('/movies/')
 def movies():
     movies = fetch_popular_movies()
-    return render_template('movies.html', movies=movies)
+    if movies:
+        return render_template('movies.html', movies=movies)
+    else:
+        return render_template('error.html', 
+            message = "Something went wrong when I tried to lookup today's movies. Sorry!" 
+        )
 
 @app.route('/movies/<movie_id>')
 def movie(movie_id):
     movie = fetch_movie(movie_id)
-    return render_template('movie.html', movie=movie)
+    if movie:
+        return render_template('movie.html', movie=movie)
+    else:
+        return render_template('error.html', 
+            message = "Something went wrong when I tried to look up this movie. Sorry!"
+        )
 
 if (__name__ == '__main__'):
     app.run(debug=True, use_reloader=False)
