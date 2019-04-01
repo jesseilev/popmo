@@ -6,3 +6,6 @@ env/
 
 # compiled source
 *.pyc
+
+# notes
+notes.md
