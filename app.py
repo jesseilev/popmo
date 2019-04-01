@@ -1,8 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 import requests
-# import json
 from collections import namedtuple
-# from functools import map
 import re
 
 
@@ -16,12 +14,14 @@ def index():
     return redirect(url_for('movies'))
 
 
-Movie = namedtuple('Movie', ['id', 'title'])
+Movie = namedtuple('Movie', ['id', 'title', 'popularity', 'release_date'])
 
 def movie_from_json(json_obj):
     return Movie(
-        id=json_obj['id'],
-        title=json_obj['title']
+        id = json_obj['id'],
+        title = json_obj['title'],
+        popularity = round(json_obj['popularity']),
+        release_date = json_obj['release_date']
     )
 
 @app.route('/movies/')
