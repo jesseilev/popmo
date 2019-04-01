@@ -38,9 +38,14 @@ def movies():
     ]
     return render_template('movies.html', movies=top_ten_movies)
 
-@app.route('/movies/<movie_title>')
-def movie(movie_title):
-    return movie_title
+@app.route('/movies/<movie_id>')
+def movie(movie_id):
+    payload = {
+        'api_key': TMDB_API_KEY
+    }
+    response = requests.get('http://api.themoviedb.org/3/movie/' + movie_id, data=payload)
+    movie = movie_from_json(response.json())
+    return render_template('movie.html', movie=movie)
 
 if (__name__ == '__main__'):
     app.run(debug=True, use_reloader=False)
