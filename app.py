@@ -16,10 +16,11 @@ def index():
     return redirect(url_for('movies'))
 
 
-Movie = namedtuple('Movie', 'title')
+Movie = namedtuple('Movie', ['id', 'title'])
 
 def movie_from_json(json_obj):
     return Movie(
+        id=json_obj['id'],
         title=json_obj['title']
     )
 

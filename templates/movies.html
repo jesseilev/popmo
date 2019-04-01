@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
     <header>
-        <h1>Movies</h1>
+        <h1>Popular Movies</h1>
     </header>
     <ul>
         {% for movie in movies %}
-        <li>{{ movie.title }}</li>
+        <li>
+            <a href="{{ movie.id }}">
+                {{ movie.title }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}
