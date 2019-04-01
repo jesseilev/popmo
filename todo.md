@@ -9,7 +9,6 @@
 - posters?
 
 ### Refactor
-- helper function for making requests
 
 ### Other
 - deploy
