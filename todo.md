@@ -2,6 +2,7 @@
 
 ### Bugs
 - handle request errors
+- handle malformed urls
 
 ### Features
 - styles
