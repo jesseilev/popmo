@@ -4,8 +4,8 @@
 
 ### Features
 - styles
+- date format
 
 ### Refactor
 
 ### Other
-- deploy
