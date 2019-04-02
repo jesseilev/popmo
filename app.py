@@ -147,7 +147,3 @@ def movie(movie_id):
         return render_template('error.html', 
             message = "Something went wrong when I tried to look up this movie. Sorry!"
         )
-
-
-if (__name__ == '__main__'):
-    app.run(debug=True, use_reloader=False)
