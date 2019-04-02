@@ -6,12 +6,17 @@
         <div class="movie-detail-info">
             <h2>{{ movie.title }}</h2>
             <div>
-                <label>Popularity Score:</label>
-                <label>{{ movie.popularity }}</label>
+                <label>
+                    Popularity Score:
+                    <span class="detail-value">{{ movie.popularity }}</span>
+                </label>
+                
             </div>
             <div>
-                <label>Release Date:</label>
-                <label>{{ movie.release_date }}</label>
+                <label>
+                    Release Date:
+                    <span class="detail-value">{{ movie.release_date }}</span>
+                </label>
             </div>
         </div>
     </div>
