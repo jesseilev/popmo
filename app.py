@@ -9,7 +9,7 @@ import re
 
 Movie = namedtuple(
     'Movie', 
-    ['id', 'title', 'popularity', 'release_date']
+    ['id', 'title', 'popularity', 'release_date', 'poster_url']
 )
 
 def movie_from_json(json_obj):
@@ -17,18 +17,20 @@ def movie_from_json(json_obj):
         id = json_obj['id'],
         title = json_obj['title'],
         popularity = round(json_obj['popularity']),
-        release_date = json_obj['release_date']
+        release_date = json_obj['release_date'],
+        poster_url = IMAGE_URL + json_obj['poster_path']
     )
 
 
 
 ##### TMDB API #####
 
-TMDB_URL = 'http://api.themoviedb.org/3/movie/'
+TMDB_URL = 'http://api.themoviedb.org/3/movie'
 TMDB_API_KEY = '9dbd6530be5d59e915f3630acc78409d'
+IMAGE_URL = 'http://image.tmdb.org/t/p/w200'
 
 def fetch_popular_movies():
-    url = TMDB_URL + 'popular'
+    url = TMDB_URL + '/popular'
     payload = {
         'api_key': TMDB_API_KEY,
         'sort_by': 'popularity.desc'
@@ -43,7 +45,7 @@ def fetch_popular_movies():
 
 
 def fetch_movie(movie_id):
-    url = TMDB_URL + movie_id
+    url = TMDB_URL + '/' + movie_id
     payload = {
         'api_key': TMDB_API_KEY
     }

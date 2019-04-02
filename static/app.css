@@ -1,8 +1,24 @@
 
-.body-content {
-    background: yellow;
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
 
+
 .navbar {
-    background: blue;
+    background: #eee;
+}
+
+.body-content {
+    /* background: yellow; */
+
+}
+
+li {
+    list-style: none;
+}
+
+footer {
+    align-self: flex-end;
 }

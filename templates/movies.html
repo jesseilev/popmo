@@ -7,7 +7,8 @@
         {% for movie in movies %}
         <li>
             <a href="{{ movie.id }}">
-                {{ movie.title }}
+                <img src="{{ movie.poster_url }}" />
+                <!-- {{ movie.title }} -->
             </a>
         </li>
         {% endfor %}
