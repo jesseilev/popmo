@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
     <header>
-        <h1>Popular Movies</h1>
+        <h2>Today's {{ movies|length }} most popular movies:</h2>
     </header>
-    <ul>
+    <ul class="movie-list">
         {% for movie in movies %}
         <li>
             <a href="{{ movie.id }}">

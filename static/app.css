@@ -3,22 +3,54 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    min-height: 100vh;
+    font-family: 'Gill Sans'
 }
 
 
-.navbar {
-    background: #eee;
+.site-header {
+    background: black;
+    padding: 0.5em;
+}
+
+.site-header h1 {
+    color: white;
 }
 
 .body-content {
     /* background: yellow; */
-
+    flex: 1;
+    background: red;
+    padding: 2em;
 }
 
-li {
+.movie-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+.movie-list li {
+    display: flex;
     list-style: none;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    /* border: 1px solid white; */
+}
+
+.movie-list li a {
+    height: 100%;
+}
+
+.movie-list li a img {
+    height: 100%;
+    width: 100%;
 }
 
 footer {
-    align-self: flex-end;
+    background: black;
+    color: white;
+    padding: 1em;
 }
