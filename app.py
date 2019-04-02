@@ -67,7 +67,7 @@ def fetch_popular_movies():
     response = requests.get(url, data=payload)
 
     # check that the request was sucessful
-    if (response.status_code == 200)
+    if (response.status_code == 200):
 
         # convert to json and extract the 'results' array from the json object
         results = response.json()['results']
