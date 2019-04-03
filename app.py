@@ -109,6 +109,8 @@ def fetch_movie(movie_id):
 ##### APP ######
 ################
 
+
+# create an app instance with the current namespace
 app = Flask(__name__)
 
 
@@ -139,6 +141,7 @@ def movies():
 def movie(movie_id):
     # attempt to fetch the movie with the id from the url
     movie = fetch_movie(movie_id)
+
     if movie:
         # if successful, render the movie.html template
         return render_template('movie.html', movie=movie)
@@ -147,3 +150,7 @@ def movie(movie_id):
         return render_template('error.html', 
             message = "Something went wrong when I tried to look up this movie. Sorry!"
         )
+
+# if running directly from the command line, start the app
+if (__name__ == '__main__'):
+    app.run()
